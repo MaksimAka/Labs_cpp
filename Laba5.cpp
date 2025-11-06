@@ -171,10 +171,20 @@ int main() {
             if (!hasDuplicateDigits(A[i]))
                 A[newN++] = A[i];
 
+        cout << "Результат: ";
+        for (int i = 0; i < newN; i++)
+            cout << A[i] << " ";
+
         int finalN = newN;
-        for (int i = 0; i < newN && finalN < 10000; i++) {
-            if (hasDigit5(A[i]) && finalN < 10000)
-                A[finalN++] = A[i];
+        for (int i = 0; i < newN and finalN < 10000; i++) {
+            if (hasDigit5(A[i]) and finalN < 10000) {
+                for (int j = finalN; j > i; j--) {
+                    A[j] = A[j - 1];
+                }
+                A[i + 1] = A[i];
+                finalN++;
+                i++;
+            }
         }
 
         cout << "Результат: ";
@@ -189,3 +199,4 @@ int main() {
     cout << endl;
     return 0;
 }
+
